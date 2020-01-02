@@ -12,6 +12,16 @@ class Player:
         self.location = Location()
         self.inventory = []
 
+    def travel(self):
+        self.choice = input("""
+        Where to?
+        1) Downtown     4) North York
+        2) Etobicoke    5) Mississauga
+        3) Scarborough  6) Brampton
+        : """)
+        location.loc = location.cities[int(self.choice) - 1]
+        self.drugs.populate_drug_list()
+
     def __str__(self):
         player_status = '''
             Player: {}
@@ -28,16 +38,15 @@ class Location:
         self.drugs = Drugs()
         self.drugs_here = self.drugs.drugs_available
 
-    def travel(self):
-        self.choice = input("""
-        Where to?
-        1) Downtown     4) North York
-        2) Etobicoke    5) Mississauga
-        3) Scarborough  6) Brampton
-        : """)
-        self.loc = self.cities[int(self.choice) - 1]
-        self.drugs.populate_drug_list()
-
+    # def travel(self):
+    #     self.choice = input("""
+    #     Where to?
+    #     1) Downtown     4) North York
+    #     2) Etobicoke    5) Mississauga
+    #     3) Scarborough  6) Brampton
+    #     : """)
+    #     self.loc = self.cities[int(self.choice) - 1]
+    #     self.drugs.populate_drug_list()
 
 
 class Drugs:
@@ -86,10 +95,3 @@ class GameLoop:
             print(player1.location.drugs_here)
         else:
             continue
-
-
-
-
-
-
-
